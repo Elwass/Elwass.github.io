@@ -67,3 +67,39 @@ myImage.onclick = () => {
   }
 };
 
+// Membuat elemen animasi
+var elem = document.createElement("div");
+elem.style.width = "100px";
+elem.style.height = "100px";
+elem.style.backgroundColor = "red";
+elem.style.position = "absolute";
+document.body.appendChild(elem);
+
+// Menginisialisasi posisi awal
+var posX = 0;
+var posY = 0;
+
+// Mengatur fungsi animasi
+function animate() {
+  // Mengubah posisi elemen
+  posX += 1;
+  posY += 1;
+  elem.style.left = posX + "px";
+  elem.style.top = posY + "px";
+
+  // Memastikan elemen tetap berada di dalam jendela
+  if (posX >= window.innerWidth - 100) {
+    posX = 0;
+  }
+  if (posY >= window.innerHeight - 100) {
+    posY = 0;
+  }
+
+  // Mengulangi animasi dengan kecepatan 60 frame per detik
+  requestAnimationFrame(animate);
+}
+
+// Memulai animasi
+animate();
+
+
